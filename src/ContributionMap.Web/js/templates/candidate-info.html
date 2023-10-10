@@ -1,0 +1,108 @@
+﻿
+<script type="text/template" id="candidate-info">
+
+    <div class="panel-heading">
+        Contribution Totals (+ refunds) from <em>individuals</em>
+        <br />for <%- name %>
+        <br /><%- filingPeriodLabel %>
+    </div>
+    <table class="table table-condensed contributions-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="text-right"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Total
+                    <span style="font-size:120%;cursor:pointer;" data-placement="top" data-toggle="tooltip" class="glyphicon glyphicon-info-sign text-primary tooltip-total" aria-hidden="true"></span>
+                </td>
+                <td class="text-right">$<%= formatNumber(totalContributionAmount) %></td>
+            </tr>
+            <tr>
+                <td>Number</td>
+                <td class="text-right"><%= formatNumber(totalNumberOfContributions) %></td>
+            </tr>
+            <tr>
+                <td>Average</td>
+                <td class="text-right">$<%- formatNumber(getAverage(totalContributionAmount, totalNumberOfContributions)) %></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a href="<%- nyccfbSearchPageLink %>" target="_blank">See List of Individual Contributions <span aria-hidden="true" class="glyphicon glyphicon-share"></span></a>
+                </td>
+            </tr>
+            <tr style="<% if(!cfbRecipId){ print('display:none;'); } %>">
+                <td colspan="2">
+                    <!--<a href="https://www.nyccfb.info/VSApps/CandidateSummary.aspx?as_cand_id=<%- cfbRecipId %>&as_election_cycle=2017" target="_blank">Candidate's Financial Summary <span aria-hidden="true" class="glyphicon glyphicon-share"></span></a>-->
+                    <a href="https://www.nyccfb.info/VSApps/CandidateSummary.aspx?as_cand_id=<%- cfbRecipId %>&as_election_cycle=2021" target="_blank">Candidate's Financial Summary <span aria-hidden="true" class="glyphicon glyphicon-share"></span></a>
+                </td>
+            </tr>
+            <tr>
+                <!--<td class="label-for-below-row">% of contribution amounts from individuals:</td>-->
+                <td class="label-for-below-row">Contribution amounts from individuals:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="pie-legend">
+                    <!--<span class="pie-legend-item" style="background-color:#008000;"><strong><%- getPercent(totalFromInsideNyc, totalFromInsideNyc + totalFromOutsideNyc) %>%</strong> within NYC</span>-->
+                    <span class="pie-legend-item" style="background-color:#008000;"><strong><%- getPercent(totalFromInsideNyc, totalFromInsideNyc + totalFromOutsideNyc) %>%</strong> within NYC <em>($<%- formatNumber(totalFromInsideNyc) %>)</em></span>
+                    <span class="pie-legend-item" style="background-color:#800080;"><strong><%- getPercent(totalFromOutsideNyc, totalFromInsideNyc + totalFromOutsideNyc) %>%</strong> outside NYC <em>($<%- formatNumber(totalFromOutsideNyc) %>)</em></span>
+                </td>
+                <td class="pie-container" style="min-width:60px;"><span id="piePrimaryInNyc"></span></td>
+            </tr>
+            <tr>
+                <!--<td class="label-for-below-row">% of number of contributions from individuals:</td>-->
+                <td class="label-for-below-row">Contributions from individuals:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="pie-legend">
+                    <span class="pie-legend-item" style="background-color:#2244ee;"><strong><%- getPercent(lessThanOrEqualTo250, lessThanOrEqualTo250 + greaterThan250) %>%</strong> of $250 or below <em>(<%- formatNumber(lessThanOrEqualTo250) %> contributions)</em></span>
+                    <span class="pie-legend-item" style="background-color:#ee2222;"><strong><%- getPercent(greaterThan250, lessThanOrEqualTo250 + greaterThan250) %>%</strong> above $250 <em>(<%- formatNumber(greaterThan250) %> contributions)</em></span>
+                </td>
+                <td class="pie-container"><span id="piePrimaryAmount"></span></td>
+            </tr>
+            <tr style="height:14px;"></tr>
+            <tr>
+                <td colspan="2" class="panel-heading" style="color:#333;">
+                    Contribution Totals (+ refunds) from <em>all contributor types</em>
+                    <br />for <%- name %>
+                    <br /><%- filingPeriodLabel %>
+                </td>
+            </tr>
+            <tr>
+                <td>Overall Total</td>
+                <td class="text-right">$<%= formatNumber(totalFromIndividuals + totalFromNotIndividuals) %></td>
+            </tr>
+            <!--<tr>
+                <td>Number</td>
+                <td class="text-right"><%= formatNumber(totalNumberOfContributions) %></td>
+            </tr>
+            <tr>
+                <td>Average</td>
+                <td class="text-right">$<%- formatNumber(getAverage(totalContributionAmount, totalNumberOfContributions)) %></td>
+            </tr>-->
+            <tr>
+                <td class="label-for-below-row">% of contribution amounts:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="pie-legend">
+                    <span class="pie-legend-item" style="background-color:#2166ac;"><strong><%- getPercent(totalFromIndividuals, totalFromIndividuals + totalFromNotIndividuals) %>%</strong> from individuals</span>
+                    <span class="pie-legend-item" style="background-color:#d1e5f0;color:#303030;"><strong><%- getPercent(totalFromNotIndividuals, totalFromIndividuals + totalFromNotIndividuals) %>%</strong> from committees, unions, other</span>
+                </td>
+                <td class="pie-container"><span id="piePrimaryContributorType"></span></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-top:8px;">
+                    <a href="<%- nyccfbSearchPageLinkCommittees %>" target="_blank">See List of Contributions from Committees, Unions, Other <span aria-hidden="true" class="glyphicon glyphicon-share"></span></a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</script>

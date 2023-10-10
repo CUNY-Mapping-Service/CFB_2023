@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <!--<iframe src='https://dev.urbanresearchmaps.org/cfbmap2021/' style='border: none;width: 800px; height:480px;'></iframe>-->
+    <iframe src='https://www.urbanresearchmaps.org/cfbmap2021/?latlng=40.705896%2C-73.89968&z=10&office=All+Races&candidate=AllAll&geography=zipcodes&amountType=total&filingPeriod=0&embed=true' style='border: none;width: 800px; height:480px;'></iframe>
+    <!--<iframe src='http://localhost:56425' style='border: none;width: 800px; height:480px;'></iframe>-->
+    <script type="text/javascript">
+        var targetWindow = document.getElementsByTagName("iframe")[0].contentWindow;
+        var trustedTargetOrigin = "https://www.urbanresearchmaps.org/cfbmap2021/";
+        //var trustedTargetOrigin = https://dev.urbanresearchmaps.org/cfbmap2021/";
+       // var trustedTargetOrigin = "http://localhost:56425";
+        window.addEventListener("message", function (e) {
+            var key = e.message ? "message" : "data";
+            var data = e[key];
+            if (data === "LOADED") {
+                targetWindow.postMessage(window.location.href, trustedTargetOrigin);
+            }
+        }, false);
+    </script>
+
+
+</body>
+</html>

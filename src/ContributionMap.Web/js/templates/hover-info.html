@@ -1,0 +1,53 @@
+﻿
+<script type="text/template" id="hover-info">
+
+    <div class="panel-heading">Contributions from Individuals from <%- featureLabel %>
+        <p><em>(includes refunds)</em></p>
+    </div>
+    
+    <table class="table table-condensed contributions-table" style="">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="text-right"></th>
+                <!--
+                <th class="text-right">General</th>
+                <th class="text-right">Overall</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="<% if(!showCfbLink){ print('display:none;'); } %>" >
+                <td colspan="2">
+                    <a href="<%- nyccfbSearchPageLink %>" target="_blank">See List of Individual Contributions <span aria-hidden="true" class="glyphicon glyphicon-share"></span></a>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:0%;">Total</td>
+                <td class="text-right" style="width:100%;">$<%- formatNumber(totalPre) %></td>
+                <!--
+                <td class="text-right">$<%- formatNumber(totalPost) %></td>
+                <td class="text-right">$<%= formatNumber(getSum(totalPre, totalPost)) %></td>-->
+            </tr>
+            <tr>
+                <td>Number</td>
+                <td class="text-right"><%- formatNumber(numberPre) %></td>
+                
+                <!--<td class="text-right"><%- formatNumber(numberPost) %></td>
+                <td class="text-right"><%= formatNumber(numberPre + numberPost) %></td>-->
+            </tr>
+            <tr>
+                <td>Average</td>
+                <td class="text-right">$<%- formatNumber(getAverage(totalPre,numberPre)) %></td>
+                
+                <!--<td class="text-right">$<%- formatNumber(getAverage(totalPost,numberPost)) %></td>
+                <td class="text-right">$<%- formatNumber(getAverage( (totalPre+totalPost), (numberPre+numberPost))) %></td>-->
+            </tr>
+        </tbody>
+
+    </table>
+
+
+
+
+
+</script>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7"  lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7"  lang="en" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8"  lang="en" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"  lang="en" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!-->
+<html class="js" dir="ltr" lang="en">
+<!--<![endif]-->
+<head>
+
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta charset="utf-8">
+    <link href="https://www.nyccfb.info/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+
+    <title>@ViewBag.Title | New York City Campaign Finance Board</title>
+
+    <meta content="width" name="MobileOptimized">
+    <meta content="true" name="HandheldFriendly">
+    <meta content="width=device-width" name="viewport">
+    <meta content="on" http-equiv="cleartype">
+
+
+
+    <style>
+        @@import url("https://www.nyccfb.info/modules/system/system.base.css?ntnor6");
+    </style>
+    <style>
+        @@import url("https://www.nyccfb.info/sites/all/themes/cfb15/css/styles.css?ntnor6");
+        @@import url("https://www.nyccfb.info/sites/all/themes/cfb15/css/page.css?ntnor6");
+    </style>
+
+
+
+    <!-- Le styles -->
+    @Styles.Render("~/css/app")
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+    @{ Html.RenderPartial("_GoogleAnalytics"); }
+
+</head>
+<body class="html">
+    <div class="mainwrap">
+        <div id="page">
+            <!-- Content goes here -->
+            @RenderBody()
+            <!-- Content goes here -->
+        </div>
+    </div>
+</body>
+</html>

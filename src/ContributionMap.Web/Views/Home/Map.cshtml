@@ -1,0 +1,301 @@
+﻿@model ContributionMap.Web.Models.MapView
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Candidate Contributions NYC";
+}
+
+<div class="container" style="margin-top:20px;margin-bottom:20px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-header">Individual Contributions to Participating 2021 Candidates
+                <span style="line-height:34px;" class="pull-right">
+                    @*<a class="btn btn-link" style="font-size:17px;line-height:normal;padding-right:0px;" href="https://nyccfb.info/media/reports/individual-contributions-participating-2013-candidates" target="_blank">2013 MAP</a>*@
+                    @*<a class="btn btn-link" style="font-size:17px;line-height:normal;padding-right:0px;" href="https://maps.nyccfb.info/?latlng=40.705896%2C-73.89968&z=10&office=All+Races&candidate=AllAll&geography=zipcodes&amountType=total&filingPeriod=0&embed=true" target="_blank">2017 MAP</a>*@
+                    @*The 2017 link had been commented out due to https issue, but as of 5/12/21 it seems ok*@
+                    
+                     <a class="btn btn-link"  id="full-map-link" style="display:none; font-size:17px;line-height:normal;padding-right:0px;" href="https://www.nyccfb.info/follow-the-money/cunymap-2021/" target="_blank">See Full Map</a>
+
+                    <a class="btn btn-link"  id="2017-link" style="display:none; font-size:17px;line-height:normal;padding-right:0px;" href="http://www.urbanresearchmaps.org/cfbmap2017/" target="_blank">2017 MAP</a>
+                    <a class="btn btn-link" style="font-size:17px;line-height:normal;padding-right:0px;" href="#aboutModal" data-toggle="modal">ABOUT</a>
+                    <a class="btn btn-link" id="share-modal-link" style="display:none;font-size:17px;line-height:normal;padding-right:0px;" href="#shareModal" data-toggle="modal">SHARE</a>
+                </span>
+            </h2>
+        </div>
+        
+        @*<div class="col-md-1">
+            <div style="margin:10px 0;padding-bottom:9px;line-height:34px;font-size:16px;text-align:right;">
+                <a href="#">ABOUT</a>
+            </div>
+
+        </div>*@
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form id="queryBuilderForm" class="form-inline" style="margin-bottom:8px;display:none;">
+                <div class="form-group">
+                    <!-- SR changed the selOffice label at CFB request -->
+                    <!--<label for="selOffice">Type of race</label><br />-->
+                    <label for="selOffice">Office</label><br />
+                    <!--
+                    <select id="selOffice" class="form-control">
+                        <option value="Mayor">Mayor</option>
+                        <option value="Public Advocate">Public Advocate</option>
+                        <option value="Comptroller">Comptroller</option>
+                        <option value="Borough President">Borough President</option>
+                        <option value="City Council">City Council</option>
+                    </select>
+                    -->
+                    @Html.DropDownListFor(
+                        model => model.Office,
+                        new SelectList(Model.Offices, "Id", "Id"),
+                        new
+                        {
+                            @id = "selOffice",
+                            @class = "form-control",
+                            @autocomplete = "off"
+                        }
+                     )
+                </div>
+                <div class="form-group">
+                    <!--<label for="selCandidate">Map by race or candidate</label><br />-->
+                    <label for="selCandidate">Candidates</label><br />
+                    @*<select id="selCandidate" class="form-control"></select>*@
+                    @Html.DropDownListFor(
+                        model => model.Candidate,
+                        new SelectList(Model.Candidates, "Id", "Name"),
+                        new
+                        {
+                            @id = "selCandidate",
+                            @class = "form-control",
+                            @autocomplete = "off"
+                        }
+                     )
+                </div>
+                <div class="form-group">
+                    <label for="selGeography">Geography</label><br />
+                                                               <select id="selGeography" class="form-control" autocomplete="off">
+                                                                   <option value="zipcodes" @(Model.Geography == "zipcodes" ? "selected" : String.Empty)>ZIP Code</option>
+                                                                   <option value="neighborhoods" @(Model.Geography == "neighborhoods" ? "selected" : String.Empty)>Neighborhood (NTA)</option>
+                                                                   <option value="citycouncildistricts" @(Model.Geography == "citycouncildistricts" ? "selected" : String.Empty)>City Council District</option>
+                                                                   <option value="nysassemblydistricts" @(Model.Geography == "nysassemblydistricts" ? "selected" : String.Empty)>NY State Assembly District</option>
+                                                                   <option value="electiondistricts" @(Model.Geography == "electiondistricts" ? "selected" : String.Empty)>Election District</option>
+                                                               </select>
+                </div>
+                <div class="form-group">
+                    <label for="selFilingPeriod">Filing Period</label><br />
+                    @Html.DropDownListFor(
+                        model => model.FilingPeriod,
+                        new SelectList(Model.FilingPeriods, "StatementNo", "DisclosurePeriod"),
+                        new
+                        {
+                            @id = "selFilingPeriod",
+                            @class = "form-control",
+                            @autocomplete = "off"
+                        }
+                     )
+                </div>
+                @*<div style="margin-top:2px;margin-bottom:2px;">
+
+
+
+                        <div class="form-group pull-right">
+                            <label for="">&nbsp;</label><br />
+                            <div style="display:inline-block;background:#e9e9e9;border-radius:8px;padding:4px 8px;">
+
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" value="total" name="radDataType" checked="checked" autocomplete="off" />
+                                        Total $
+                                    </label>
+                                </div>
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" value="average" name="radDataType" autocomplete="off" />
+                                        Average $
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+            </form>
+            @*<div class="form-group">
+                    <label for="txtCandidateSearch">Office / Candidate Search</label><br />
+                    <input id="txtCandidateSearch" type="text" class="form-control" />
+                </div>*@
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-9">
+            @*<input id="txtSearch" type="text" placeholder="search..." style="display:none;">*@
+            <div id="map"></div>
+            <div id="link-region"></div>
+            <div class="form-group-sm amount-type-selector">
+                <div class="radio-inline">
+                    <label style="">
+                        <input type="radio" value="total" name="radAmountType" @(Model.AmountType == "total" ? "checked" : String.Empty) autocomplete="off" />
+                        Total $
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label style="">
+                        <input type="radio" value="average" name="radAmountType" @(Model.AmountType == "average" ? "checked" : String.Empty) autocomplete="off" />
+                        Average $
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label style="">
+                        <input type="radio" value="number" name="radAmountType" @(Model.AmountType == "number" ? "checked" : String.Empty) autocomplete="off" />
+                        Number
+                    </label>
+                </div>
+            </div>
+            @*<div style="top:0;right:0;position:absolute;">
+                    <div class="form-group">
+                        <label for="">&nbsp;</label><br />
+                        <div style="display:inline-block;background:#e9e9e9;border-radius:8px;padding:4px 8px;">
+
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" value="total" name="radDataType" checked="checked" autocomplete="off" />
+                                    Total $
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" value="average" name="radDataType" autocomplete="off" />
+                                    Average $
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <div class="loading-mask"
+                 style="top:0;bottom:0;left:0;right:0;position:absolute;display:none;background:rgba(255,255,255, 0);">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div id="candidateSummary"></div>
+        </div>
+        @*<div class="col-md-0">
+                <div id="mapTitle"></div>
+                <div id="mapFeatureIdentify"></div>
+            </div>*@
+
+    </div>
+</div>
+<!-- MODALS AND WINDOWS-->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" data-backdrop="true"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title">
+                    <span style="" class="page-header">Candidate Contributions NYC</span>
+                </h3>
+
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" id="aboutTabs" style="display:none;">
+                    <li><a id="aboutTab" data-toggle="tab" href="#aboutTabContent">About</a></li>
+                </ul>
+                <div class="tab-content" id="aboutTabsContent">
+                    <div id="aboutTabContent" class="tab-pane fade" data-html="about.html">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" data-backdrop="true"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title">
+                    <span style="" class="page-header">Candidate Contributions NYC</span>
+                </h3>
+
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" id="shareTabs" style="display:none;">
+                    <li><a id="shareTab" data-toggle="tab" href="#shareTabContent">Share</a></li>
+                </ul>
+                <div class="tab-content" id="shareTabsContent">
+                    <div id="shareTabContent" class="tab-pane fade" data-html="share.html">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="modal fade" id="nyccfbSearchPageCaveat" tabindex="-1" role="dialog" data-backdrop="true" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title">
+                        <span style="" class="page-header">Candidate Contributions NYC</span>
+                    </h3>
+
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+<!-- HTML TEMPLATES -->
+@Html.RenderTemplates("~/bundle/js/templates/html")
+
+<!-- JAVSCRIPT -->
+@Scripts.Render("~/js/_lib/lib")
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAOWhKgPb0sFp3skjbAaShE1LlmjjWluE0" type="text/javascript"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+
+@Scripts.Render("~/js/app")
+
+
+<script type="text/javascript">
+        $(function () {
+
+			var _baseUrl = '@Url.Content("~/")';
+			if (window.location !== window.parent.location) {
+
+				//_baseUrl = window.parent.location.host+'/';
+
+                window.addEventListener("message", function (e) {
+                    var key = e.message ? "message" : "data";
+                    var _parentUrl = e[key];
+                    ContributionMap.start(new ContributionMapConfig({ baseUrl: _baseUrl, parentUrl: _parentUrl}));
+                }, false);
+                window.parent.postMessage("LOADED", "*");
+            } else {
+                 ContributionMap.start(new ContributionMapConfig({ baseUrl: _baseUrl }));
+            }
+           
+        });
+</script>
+
