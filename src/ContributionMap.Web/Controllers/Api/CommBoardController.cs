@@ -21,7 +21,7 @@ namespace ContributionMap.Web.Controllers.Api
             _ccdRepository = repository;
         }
 
-        [Route("api/candidates/{candidateId}/commboarddistricts/filingperiods/{filingPeriod?}")]
+        [Route("api/candidates/{candidateId}/nycommboarddistricts/filingperiods/{filingPeriod?}")]
         [HttpGet]
         public IDictionary<string, CommBoardDistrict> GetCityCouncilDistrictsForCandidate(string candidateId, int filingPeriod = 0)
         {

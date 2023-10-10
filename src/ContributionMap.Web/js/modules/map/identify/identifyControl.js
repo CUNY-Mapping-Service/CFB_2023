@@ -51,6 +51,7 @@
                     });
                 }
                
+                console.log(item)
                
                 var view = new Identify.IdentifyView({
                     data: {

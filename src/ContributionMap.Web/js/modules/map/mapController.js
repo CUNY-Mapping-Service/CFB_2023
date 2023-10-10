@@ -169,7 +169,7 @@ ContributionMap.module('Map', function (Map, App, Backbone, Marionette, $, _) {
         },
 
         initQueryVisualizer: function(config, query, queryString){
-          //  console.log(query)
+          // console.log(query)
            // query.attributes = queryString
 
             _queryVisualizer = new Map.QueryVisualizer({
@@ -204,6 +204,7 @@ ContributionMap.module('Map', function (Map, App, Backbone, Marionette, $, _) {
             });
             _queryVisualizer.on('highlighted', function (data) {
                 //_identify.show(data);
+               
                 _identify.setFeatureData(data);
             });
             _queryVisualizer.on('unhighlighted', function (data) {
