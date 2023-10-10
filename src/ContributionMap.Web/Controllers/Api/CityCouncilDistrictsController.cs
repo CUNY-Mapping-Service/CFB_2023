@@ -21,23 +21,7 @@ namespace ContributionMap.Web.Controllers.Api
             _ccdRepository = repository;
         }
 
-        //public IEnumerable<CityCouncilDistrictSubset> GetCityCouncilDistrictsForCandidate(string candidateId)
-        //{
-        //    IEnumerable<CityCouncilDistrict> cds = _ccdRepository.GetAll();
-
-        //    CityCouncilDistrictSubsetMapper mapper = new CityCouncilDistrictSubsetMapper(candidateId);
-        //    IEnumerable<CityCouncilDistrictSubset> vals = cds.Select(mapper.CreateCategory).Where(d => d != null).ToList();
-
-        //    //IDictionary<string, CityCouncilDistrictSubset> dict = new Dictionary<string, CityCouncilDistrictSubset>();
-
-        //    //IDictionary<string, CityCouncilDistrictSubset> dict = vals.ToDictionary(x => x.Id, x => x);
-        //    //return dict;
-
-
-        //    return vals;
-        //}
-
-        [Route("api/candidates/{candidateId}/citycouncildistricts/filingperiods/{filingPeriod?}")]
+        [Route("api/candidates/{candidateId}/nycommboarddistricts/filingperiods/{filingPeriod?}")]
         [HttpGet]
         public IDictionary<string, CityCouncilDistrict> GetCityCouncilDistrictsForCandidate(string candidateId, int filingPeriod = 0)
         {

@@ -29,6 +29,9 @@ namespace ContributionMap.Web
             container.Bind<IElectedOfficeRepository>().To<ElectedOfficeRepository>();
             container.Bind<IFilingPeriodRepository>().To<FilingPeriodRepository>();
             container.Bind<ICityCouncilDistrictRepository>().To<CityCouncilDistrictRepository>();
+
+            container.Bind<ICommBoardRepository>().To<CommBoardRepository>();
+
             container.Bind<IElectionDistrictRepository>().To<ElectionDistrictRepository>();
             container.Bind<INeighborhoodRepository>().To<NeighborhoodRepository>();
             container.Bind<IZipCodeRepository>().To<ZipCodeRepository>();

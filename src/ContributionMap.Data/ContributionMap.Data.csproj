@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CandidateRepository.cs" />
+    <Compile Include="Repositories\CommBoardDistrictRepository.cs" />
     <Compile Include="Repositories\FilingPeriodRepository.cs" />
     <Compile Include="Repositories\NeighborhoodRepository.cs" />
     <Compile Include="Repositories\NysAssemblyDistrictRepository.cs" />

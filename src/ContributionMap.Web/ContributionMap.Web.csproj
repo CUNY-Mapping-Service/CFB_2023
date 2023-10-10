@@ -239,6 +239,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\CandidatesController.cs" />
+    <Compile Include="Controllers\Api\CommBoardController.cs" />
     <Compile Include="Controllers\Api\CityCouncilDistrictsController.cs" />
     <Compile Include="Controllers\Api\NysAssemblyDistrictsController.cs" />
     <Compile Include="Controllers\Api\ZipCodesController.cs" />
@@ -248,10 +249,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelMappers\CommBoardDistrictSubsetMapper.cs" />
     <Compile Include="ModelMappers\CityCouncilDistrictSubsetMapper.cs" />
     <Compile Include="ModelMappers\ElectionDistrictSubsetMapper.cs" />
     <Compile Include="ModelMappers\NeighborhoodSubsetMapper.cs" />
     <Compile Include="ModelMappers\ZipCodeSubsetMapper.cs" />
+    <Compile Include="Models\CommBoardDistrictSubset.cs" />
     <Compile Include="Models\CityCouncilDistrictSubset.cs" />
     <Compile Include="Models\MapView.cs" />
     <Compile Include="Models\ElectionDistrictSubset.cs" />

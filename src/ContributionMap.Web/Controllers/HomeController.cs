@@ -17,6 +17,7 @@ namespace ContributionMap.Web.Controllers
         private IElectedOfficeRepository _raceRepository;
         private ICandidateRepository _candidateRepository;
         private IFilingPeriodRepository _fpRepository;
+       // private ICommBoardRepository 
         public HomeController(IElectedOfficeRepository raceRepository, ICandidateRepository candidateRepository,
             IFilingPeriodRepository fpRepository
             )

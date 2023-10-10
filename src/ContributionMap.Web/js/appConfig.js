@@ -37,7 +37,7 @@
             'electiondistricts': { label: 'Election District', url: 'geography/nyed.topojson.js', idPropertyName: 'ElectDist', hoverTitleTemplate: 'Election District <%= parseInt(id.toString().substring(2,5)) %> in Assembly District <%= id.toString().substring(0,2) %> ', legendTemplate: 'Election District <%= id %>' },
             'neighborhoods': { label: 'Neighborhood', url: 'geography/nynta.topojson.js', idPropertyName: 'NTACode', namePropertyName: 'NTAName', hoverTitleTemplate: 'the <%= name %> neighborhood area (<%= id %>)', legendTemplate: 'Neighborhood Area <%= id %>' },
             'nysassemblydistricts': { label: 'New York State Assembly District', url: 'geography/nyad.topojson.js', idPropertyName: 'AssmDist', hoverTitleTemplate: 'New York State Assembly District <%= id %>', legendTemplate: 'New York State AD <%= id %>' },
-            'nycommboard': { label: 'New York City Community Board', url: 'geography/nycd.topojson.js', idPropertyName: 'commboard', hoverTitleTemplate: 'New York City Community Board <%= id %>', legendTemplate: 'New York City CB <%= id %>' },
+            'nycommboarddistricts': { label: 'New York City Community Board', url: 'geography/nycd.topojson.js', idPropertyName: 'commboard', hoverTitleTemplate: 'New York City Community Board <%= id %>', legendTemplate: 'New York City CB <%= id %>' },
             'zipcodes': { label: 'ZIP Code', url: 'geography/NYCZIPCODESESRI2019.topojson.js', idPropertyName: 'ZIPCODE', hoverTitleTemplate: 'ZIP Code <%= id %>', legendTemplate: 'ZIP Code <%= id %>' }
         },
 

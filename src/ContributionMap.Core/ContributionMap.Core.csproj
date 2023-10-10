@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\CandidateContributions.cs" />
+    <Compile Include="Entities\CommBoardDistrict.cs" />
     <Compile Include="Entities\CityCouncilDistrict.cs" />
     <Compile Include="Entities\ElectionDistrict.cs" />
     <Compile Include="Entities\FilingPeriod.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Entities\NysAssemblyDistrict.cs" />
     <Compile Include="Entities\ZipCode.cs" />
     <Compile Include="Interfaces\ICandidateRepository.cs" />
+    <Compile Include="Interfaces\ICommBoardRepository.cs" />
     <Compile Include="Interfaces\INysAssemblyDistrictRepository.cs" />
     <Compile Include="Interfaces\IFilingPeriodRepository.cs" />
     <Compile Include="Interfaces\INeighborhoodRepository.cs" />
