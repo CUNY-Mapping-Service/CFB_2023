@@ -56,7 +56,8 @@
         },
         onOfficeChanged: function (e) {
             App.Entities.CandidateList.getByOffice(this.model.get('office')).then($.proxy(
-                function(candidates){
+                function (candidates) {
+                  //  console.log(candidates.at(0))
                     this.updateCandidateList(candidates);
                     if(this.model.changed.candidate){
                         //this.model.set('candidate', this.model.get('candidate'));

@@ -12,17 +12,24 @@
     };
     _.extend(Entities.GeographicDataManager.prototype, Backbone.Events, {
         getData: function (geographyType) {
-
+           // console.log(geographyType)
             if (!this.geoJsonData[geographyType]) {
-                this.geoJsonData[geographyType] = this.fetchGeoJson(this.geographicDataFiles[geographyType].url).then(function (data) {
-                    if (data.objects[geographyType]) {
+            this.geoJsonData[geographyType] = this.fetchGeoJson(this.geographicDataFiles[geographyType].url).then(function (data) {
+                   // console.log(data)
+                if (data.objects[geographyType]) {
+                 //   console.log(data.objects[geographyType])
                         if (data.objects[geographyType].geometries) {
                             var geos = data.objects[geographyType].geometries;
                             for (var i = 0; i < geos.length; i++) {
-                                geos[i].id = geos[i].id || geos[i].properties.id;
+                                if (geos[i].properties.id) {
+                                    geos[i].id = geos[i].properties.id
+                                   // console.log(geos[i])
+                                }
+                               // || geos[i].id;
                             }
                         }
                     }
+                   // console.log(data)
                     return data;
                 });
             }
