@@ -14,7 +14,7 @@
 
         //COMMON PARAMETERS FOR ALL QUERIES
         //params['ec'] = '2017';
-        params['ec'] = '2021';
+        params['ec'] = '2023';
         //params['ec_id'] = '2017';
         //params['RecTyp'] = 'Candidates only';
         params['rt'] = 'can';

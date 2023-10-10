@@ -160,7 +160,7 @@ ContributionMap.module('Map', function (Map, App, Backbone, Marionette, $, _) {
                 
                 $('#link-region').show();
                 $("#share-modal-link").show();
-                $("#2017-link").show();
+                $("#2021-link").show();
                 $("#queryBuilderForm").show();
             }else{
                 $("#full-map-link").show();
