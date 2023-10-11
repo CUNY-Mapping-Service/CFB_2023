@@ -132,17 +132,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="geography\nyad.topojson.js" />
-    <Content Include="geography\nyad_23c_wgs84.topojson.js" />
     <Content Include="geography\nycc.topojson.js" />
-    <Content Include="geography\nycc_23c_wgs84.topojson.js" />
     <Content Include="geography\nycd.topojson.js" />
-    <Content Include="geography\nycd_23c_wgs84.topojson.js" />
     <Content Include="geography\NYCZIPCODESESRI2019.topojson.js" />
     <Content Include="geography\nyed.topojson.js" />
-    <Content Include="geography\nyed20c_clipped.topojson.js" />
-    <Content Include="geography\nyed_23c_wgs84.topojson.js" />
     <Content Include="geography\nynta.topojson.js" />
-    <Content Include="geography\nynta2020_type0_wgs84.topojson.js" />
     <Content Include="img\sharecfbmap2021_500.gif" />
     <Content Include="js\modules\about\shareView.js" />
     <Content Include="about.html" />
@@ -150,12 +144,6 @@
     <Content Include="css\map.css" />
     <Content Include="css\typeaheadjs.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="geography\NTAnycAll.geojson.js" />
-    <Content Include="geography\NTAnycAll.topojson.js" />
-    <Content Include="geography\NYCC2013lbl.geojson.js" />
-    <Content Include="geography\NYCC2013lbl.topojson.js" />
-    <Content Include="geography\NYSAssembly.geojson.js" />
-    <Content Include="geography\NYSAssembly.topojson.js" />
     <Content Include="Global.asax" />
     <Content Include="img\bmlogo.png" />
     <Content Include="img\CFBinfobox_200w.gif" />
@@ -273,8 +261,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="geography\NYSAssembly_clipped_65pct.geojson.js" />
-    <Content Include="geography\NysAssembly_clipped_65pct.topojson.js" />
     <None Include="Properties\PublishProfiles\ContributionMapFileDeploy.pubxml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_EmbedLayout.cshtml" />

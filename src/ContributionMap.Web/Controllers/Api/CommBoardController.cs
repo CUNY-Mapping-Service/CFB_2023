@@ -23,7 +23,7 @@ namespace ContributionMap.Web.Controllers.Api
 
         [Route("api/candidates/{candidateId}/nycommboarddistricts/filingperiods/{filingPeriod?}")]
         [HttpGet]
-        public IDictionary<string, CommBoardDistrict> GetCityCouncilDistrictsForCandidate(string candidateId, int filingPeriod = 0)
+        public IDictionary<string, CommBoardDistrict> GetCommBoardDistrictsForCandidate(string candidateId, int filingPeriod = 0)
         {
             IEnumerable<CommBoardDistrict> cds = _ccdRepository.GetByCandidate(candidateId, filingPeriod);
             IDictionary<string, CommBoardDistrict> dict = cds.ToDictionary(x => x.Id, x => x);

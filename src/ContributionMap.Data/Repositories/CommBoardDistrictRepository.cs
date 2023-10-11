@@ -29,7 +29,7 @@ namespace ContributionMap.Data.Repositories
             using (var conn = _connectionFactory.CreateConnection())
             {
                 conn.Open();
-                cds = conn.Query<CommBoardDistrict>("GetCandidateContributionsByCouncilDistrict", new { CANDIDATEID = candidateId, FILINGPERIOD = filingPeriod }, commandType: CommandType.StoredProcedure).ToList();
+                cds = conn.Query<CommBoardDistrict>("GetCandidateContributionsByCommunityBoard", new { CANDIDATEID = candidateId, FILINGPERIOD = filingPeriod }, commandType: CommandType.StoredProcedure).ToList();
             }
 
             return cds;

@@ -107,7 +107,7 @@
             'combined': function (data, amountType) {
                 var tot = data['prePrimTot'] + data['postPrimTot'];
                 var num = data['prePrimNum'] + data['postPrimNum'];
-
+                    console.log(tot)
                 if (amountType === 'average') {
                     return tot / num;
                 } else if (amountType === 'number') {
@@ -165,7 +165,7 @@
                 return this.geoManager.getData(geography).then($.proxy(function (topoJson) {
                     var objectKey = _.keys(topoJson.objects)[0];
                     var geoj = topojson.feature(topoJson, topoJson.objects[objectKey]);
-                    console.log(geoj)
+                    //console.log(geoj)
                     this.geoLayersFeatureCount[geography] = geoj.features.length;
                     //this.geoLayersStyleUpdateCount[geography] = 0;
                     this.geoLayers[geography] = new google.maps.Data({ style: { fillOpacity: 0, strokeOpacity: 0 } });
