@@ -22,7 +22,8 @@
                             var geos = data.objects[geographyType].geometries;
                             for (var i = 0; i < geos.length; i++) {
                                 if (geos[i].properties.id) {
-                                    geos[i].id = geos[i].properties.id
+                                   // console.log(geos[i].properties)
+                                    geos[i].id = geos[i].properties.id//.toString()
                                    // console.log(geos[i])
                                 }
                                // || geos[i].id;

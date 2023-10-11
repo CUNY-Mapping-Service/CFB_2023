@@ -11,7 +11,7 @@ namespace ContributionMap.Web.Models
     {
         public MapView(){
             AmountTypes = new List<string>() { "total", "average", "number" };
-            Geographies = new List<string>() { "zipcodes", "neighborhoods", "citycouncildistricts","electiondistricts", "nysassemblydistricts" };
+            Geographies = new List<string>() { "zipcodes", "neighborhoods", "citycouncildistricts","electiondistricts", "nysassemblydistricts", "nycommboarddistricts" };
         }
 
         public IEnumerable<ElectedOffice> Offices { get; set; }
